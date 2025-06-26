@@ -36,7 +36,11 @@ export class ClientController {
                 return errorHandle(res, 'Email adress already registered ', 409);
             }
 
-            const client = await Client.create(value);
+            const hashedPassword = await crypto.encrypt(value.password);
+            const client = await Client.create({
+                hashedPassword, 
+                ...value
+            });
             const payload = { id: client._id };
             const accessToken = await token.generateAccessToken(payload);
             const refreshToken = await token.generateRefreshToken(payload);

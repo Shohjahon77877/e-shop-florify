@@ -6,6 +6,7 @@ import CategoryRouter from './routes/category.routes.js';
 import ProductRouter from './routes/product.routes.js';
 import SalesmanRouter from './routes/salesman.routes.js';
 import ClientRouter from './routes/client.routes.js';
+import SoldProductRouter from './routes/sold-product.routes.js'
 import { createSuperAdmin } from './db/create-superadmin.js';
 import cookieParser from 'cookie-parser';
 
@@ -21,7 +22,8 @@ app.use('/admin', AdminRouter);
 app.use('/category', CategoryRouter);
 app.use('/product', ProductRouter);
 app.use('/salesman', SalesmanRouter);
-app.use('/client', ClientRouter)
+app.use('/client', ClientRouter);
+app.use('/soldproduct', SoldProductRouter);
 
 app.use((error, _, res, req) => {
     if (error) {

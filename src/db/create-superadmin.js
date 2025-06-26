@@ -11,6 +11,7 @@ export const createSuperAdmin = async () => {
             const hashedPassword = await crypto.encrypt(config.SUPERADMIN_PASSWORD);
             await Admin.create({
                 username: config.SUPERADMIN_USERNAME,
+                email: config.SUPERADMIN_EMAIL,
                 hashedPassword,
                 role: 'superadmin'
             });
